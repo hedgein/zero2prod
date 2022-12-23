@@ -24,6 +24,9 @@ jobs:
           name: Formatting
           command: "cargo fmt -- --check"
       - run:
+          name: Install dependency audting
+          command: "cargo install cargo-audit"
+      - run:
           name: Crate Vulnerabilities Check
           command: "cargo audit"
       - run:
