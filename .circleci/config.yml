@@ -14,24 +14,23 @@ jobs:
     # See: https://circleci.com/docs/2.0/configuration-reference/#steps
     steps:
       - checkout
-      - run: cargo --version
       - restore_cache:
           key: project-cache
       - run:
           name: Linter
-          command: cargo clippy -- -D warnings
+          command: "cargo clippy -- -D warnings"
       - run:
           name: Formatting
-          command: cargo fmt -- --check
+          command: "cargo fmt -- --check"
       - run:
           name: Crate Vulnerabilities Check
-          command: cargo audit
+          command: "cargo audit"
       - run:
           name: Stable Build
-          command: cargo build
+          command: "cargo build"
       - run:
           name: Test
-          command: cargo test
+          command: "cargo test"
       - save_cache:
           key: project-cache
           paths:
@@ -42,4 +41,3 @@ jobs:
 
         
           
-
